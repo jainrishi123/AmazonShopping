@@ -1,0 +1,22 @@
+<div class="shippers">
+  <div style="text-align: center;"><h2>Shipper Details</h2></div>
+    <table class="table " id="products">
+      <thead >
+        <tr class="header">
+          <td scope="col">Shipper Id</td>
+          <td scope="col">Shipper name</td>
+          <td scope="col">Phone Number</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shipper of shippers">
+          <td>{{shipper.shipperId}}</td>
+          <td>{{shipper.shipperName}}</td>
+          <td>{{shipper.phone}}</td>
+        </tr>
+       
+    </table>
+  </div>
+  
+  
+  
