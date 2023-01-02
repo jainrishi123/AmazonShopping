@@ -62,7 +62,7 @@ tbody {
 
 .product__form_Add {
     margin: auto;
-    width: 600px;
+    width: 400px;
     background-color: #393E46;
     color: white;
     align-items: center;
@@ -104,7 +104,7 @@ tbody {
 
 .edit__form {
     margin: auto;
-    width: 600px;
+    width: 350px;
     background-color: #393E46;
     color: white;
     align-items: center;

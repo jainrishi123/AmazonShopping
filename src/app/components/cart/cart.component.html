@@ -1,7 +1,7 @@
-<div class="product__body" *ngIf="cartProducts?.length > 0">
-    <h1>Products</h1>
-    <div class="products">
-        <table class="table " id="products">
+<div class="cart__product__body" *ngIf="cartProducts?.length > 0">
+    <h1>Cart Products</h1>
+    <div class="cart__products">
+        <table class="table " id="cart__products">
             <thead class="header">
                 <tr>
                     <td scope="col">Product Id</td>
@@ -17,7 +17,7 @@
                     <td>{{product.productID}}</td>
                     <td>{{product.productName}}</td>
                     <td>{{product.price}}</td>
-                    <td>{{product.unit}}</td>
+                    <td>1</td>
                     <td><button (click)="removeCart(product)" class="product__btn"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000"
                                 class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -27,18 +27,51 @@
                 </tr>
             </tbody>
         </table>
+        <div><h4>Total Amount : {{amount}}</h4></div>
     </div>
     <div style="text-align: center; margin-top: 8px; ">
-        <div colspan="7"><button type="button" class="btn_add__products" style="border-radius: 8px ;">
+        <div colspan="7"><button type="button" class="btn_add__products" style="border-radius: 8px ;" (click)="buyBtnStateChange()">
                 Buy Now</button> </div>
         <!-- (click)="openAddBtnState()"  -->
-
-
-
     </div>
+
+    <div class="form" *ngIf="buyBtnState">
+        <h2>Confirm order</h2>
+        <div class="order__form_Add">
+          <form (ngSubmit)="BuyProducts()">
+            <div>
+              <label for="Date">Order Date</label>
+              <input type="text" id="date" placeholder="Today's Date" readonly [(ngModel)]="order.date"
+                [ngModelOptions]="{standalone: true}">
+                <!-- <script> 
+                  var date = new Date(); 
+                  var p = document.getElementById("myId"); 
+                  p.innerHTML = date; 
+                  </script>  -->
+            </div>
+            <div>
+              <label for="customer__id">Customer Id</label>
+              <input type="number" id="customer__id"   [(ngModel)]="order.customerID"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+              <label for="supplier_id">supplier Id</label>
+              <input type="number" id="supplier_id" readonly [(ngModel)]="order.shipperID"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+            <!-- <div>
+              <label for="product__supplier">Supplier Id</label>
+              <input type="number" id="supplier__id" placeholder="Enter supplier id" [(ngModel)]="productVo.supplierId"
+                [ngModelOptions]="{standalone: true}">
+            </div> -->
+            <div class="form__button">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
 </div>
 
-
-<div *ngIf="cartProducts?.length == 0">
-    <h1>Cart is Empty</h1>
+<div *ngIf="cartProducts?.length == 0" style="display: block; padding-top: 30px ; margin-top: 200px;">
+    <h1 routerLink="../"><b>Add Products to cart</b></h1>
 </div>

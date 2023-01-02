@@ -1,0 +1,48 @@
+<div class="order__body">
+  <div *ngIf="orders.length>0">
+    <h1>Orders</h1>
+    <div class="orders">
+      <table class="table " id="orders">
+        <thead class="header">
+          <tr>
+            <td scope="col">Order Id</td>
+            <td scope="col">Customer Id</td>
+            <td scope="col">Order Date</td>
+
+            <td scope="col">View Details</td>
+            <td scope="col">Price</td>
+            <!-- <td scope="col">Delete</td>
+            <td scope="col">Edit</td>
+            <td scope="col">Cart</td> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders" class="td">
+            <td >{{order.orderId}}</td>
+            <td >{{order.customer.customerName}}</td>
+            <td >{{order.date}}</td>
+            <td>
+              <div>
+                <ul *ngFor = "let o of order.orderDetails">{{o.product.productName}} - {{o.product.price}}</ul>
+              </div>
+
+              <!-- <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle on (click)="productName(order.orderDetails)">
+              Products
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+              <button ngbDropdownItem *ngFor="let name of orderProductNames">{{name}}</button>
+            </div>
+          </div> -->
+            </td>
+            <!-- <td>{{order.unit}}</td> -->
+            <td>{{price(order.orderDetails)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="orders.length==0" style="margin-top: 250px;">
+    <h1 routerLink="../cart"><b>Click here to Place Order</b></h1>
+  </div>
+</div>

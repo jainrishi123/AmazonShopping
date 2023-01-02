@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Shipper, ShipperVo } from 'src/app/models/shipper';
+import { Shipper } from 'src/app/models/shipper';
 import { AllService } from 'src/app/service/all.service';
 
 @Component({

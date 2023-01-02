@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductVo } from 'src/app/models/Product';
+import { Product } from 'src/app/models/Product';
 import { AllService } from 'src/app/service/all.service';
+import Swal from 'sweetalert2';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-products',
@@ -10,21 +12,27 @@ import { AllService } from 'src/app/service/all.service';
 
 export class ProductsComponent implements OnInit {
   products: Product[];
-  addBtnState: boolean = false;
   editBtnState: boolean = false;
   range: number = 0;
-  productVo: ProductVo = new ProductVo();
+  product: Product = new Product();
   private productService: AllService;
-  constructor(productService: AllService) {
-    productService.productList=productService.productList.filter(product1 => product1 !== null)
+  closeResult: string;
+
+
+  constructor(productService: AllService, private modalService: NgbModal) {
     this.productService = productService;
+    console.log("product Constructor")
+
   }
 
   ngOnInit(): void {
     this.getProducts()
     this.productService.productListModified.subscribe(res => {
-      this.getProducts()
+      this.getProducts(),
+        console.log("Product Onint")
     })
+
+
   }
 
 
@@ -36,82 +44,108 @@ export class ProductsComponent implements OnInit {
   }
 
   addCart(product: Product) {
-
-    this.productService.addCart(product)
-    
+    this.productService.addcart(product);
   }
 
-
+  removeCart(product: Product) {
+    console.log("remove icon")
+    this.productService.removeCart(product);
+  }
 
   addProducts() {
-    console.log(this.productVo)
-    this.addBtnState=false
-    this.editBtnState=false
-    // this.changeAddBtnState()
-    // this.changeEditBtnState()
-    this.productService.addProducts(this.productVo)
+    this.productService.addProducts(this.product)
       .subscribe(res => {
-        alert(res)
-      },
-        (error: any) => {
-          console.log(error)
-          alert(error.error)
-        });
-    this.productVo = new ProductVo();
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: res,
+          text: 'New Product added',
+          icon: 'success'
+        })
+      }, (error: any) => {
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: error.error,
+          icon: 'error'
+        })
+      });
+    this.product = new Product();
+    this.modalService.dismissAll();
   }
-
-  openAddBtnState(){
-    this.addBtnState=!this.addBtnState
-    this.editBtnState=false
-  }
-
-  openEditBtnState(){
-    this.editBtnState=!this.editBtnState
-    this.addBtnState=false
-  }
-
-  // changeAddBtnState() {
-  //   this.addBtnState = !this.addBtnState
-  //   if (this.addBtnState) {
-  //     this.editBtnState = false
-  //   }
-  // }
-
-  // changeEditBtnState() {
-  //   this.editBtnState = !this.editBtnState
-  //   if (this.addBtnState) {
-  //     this.addBtnState = false
-  //   }
-  // }
 
   deleteProduct(id) {
     this.productService.deleteProduct(id)
       .subscribe(res => {
-        alert(res)
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: res,
+          icon: 'success'
+        })
       }, (error) => {
-        alert(error)
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: "Product cannot be deleted",
+          text: 'Product Present in Orders',
+          icon: 'error'
+        })
       });
+
 
   }
 
 
   editProduct() {
-    this.editBtnState=false
-    console.log(this.productVo)
-    this.productService.editProduct(this.productVo)
+    this.editBtnState = false
+    this.productService.editProduct(this.product)
       .subscribe(res => {
-        alert(res)
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: res,
+          icon: 'success'
+        })
+        this.product=new Product();
       }, (error) => {
-        alert(error.error)
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: error.error,
+          icon: 'error'
+        })
       })
-
+    this.product = new Product();
+    this.modalService.dismissAll();
   }
 
   setEditProductId(product: Product) {
-    // this.changeEditBtnState()
-    this.editBtnState=true
-    this.productVo = product
+    this.product = product
   }
 
+  productCartIcon(productId) {
+    return this.productService.setCartIcon(productId);
+  }
+
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    this.productService.productListModified.next();
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+
+  }
 
 }
