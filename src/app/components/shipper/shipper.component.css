@@ -24,30 +24,31 @@ tbody {
     color: antiquewhite;
 } */
 
-#products {
+#shippers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     border-radius: 5px !important;
-    
+    background-color: #ddd;
+
   }
-  #products th {
+  #shippers th {
     background-color: #04AA6D;
   color: white;
   }
 
-  #products td, #products th {
+  #shippers td, #shippers th {
     border: 1px solid #ddd;
     padding: 8px;
   }
   
 
-  #products tr:nth-child(even){background-color: #f2f2f2;}
+  #shippers tr:nth-child(even){background-color: #f2f2f2;}
   
-  #products tr:hover {background-color: rgb(241, 193, 193);}
+  #shippers tr:hover {background-color: rgb(241, 193, 193);}
   
 
-  #products th {
+  #shippers th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

@@ -2,7 +2,6 @@
      margin: 30px;  
     padding: 10px; 
     text-align: center;
-   
 }
 
 h1 {
@@ -20,6 +19,8 @@ h1 {
     width: 800px;
     align-items: center;
     margin: auto;
+    background-color: #ddd;
+
     
     /* background-color: rgb(32, 86, 117); */
 }
@@ -27,22 +28,6 @@ h1 {
  .table{
     margin: 0 auto;
 }
-
-/* 
-
-
-thead>tr {
-    color: var(--color2);
-}
-
-thead>td {
-    color: white;
-    height: 1000px !important;---
-}
-
-tbody {
-    color: antiquewhite;
-}*/
 
 .product__btn {
     border: none;

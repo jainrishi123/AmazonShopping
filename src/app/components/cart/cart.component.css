@@ -5,7 +5,7 @@
   
 }
 
-h1 {
+h2 {
     text-decoration-color: #04AA6D;
     text-align: center;
     margin: 0  0 0 auto;
@@ -20,12 +20,19 @@ h1 {
     width: 800px;
     align-items: center;
     margin: auto;
-    
+    background-color: #ddd;
+
     /* background-color: rgb(32, 86, 117); */
 }
 
  .table{
     margin: 0 auto;
+}
+
+table > tbody >tr >td{
+   
+  display:table-cell ;
+  vertical-align: middle;
 }
 
 
@@ -105,4 +112,12 @@ color: white;
   background-color: var(--color1);
   border: 0;
   color: var(--color4);
+}
+.shopping button {
+  width: 250px;
+  margin-top: 10px;
+  background-color:rgb(162, 162, 218);
+  border: 0;
+  color: var(--color4);
+  border-radius: 10px;
 }

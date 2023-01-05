@@ -20,7 +20,8 @@ h1 {
     width: 800px;
     align-items: center;
     margin: auto;
-    
+    background-color: #ddd;
+
     /* background-color: rgb(32, 86, 117); */
 }
 

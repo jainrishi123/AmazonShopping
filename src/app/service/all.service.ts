@@ -151,7 +151,6 @@ export class AllService {
 
   removeCart(product:Product){
     this.cartProductList = this.cartProductList.filter(product1 => product1 !== product.productID)
-    console.log(this.cartProductList)
         Swal.fire({
           showConfirmButton: false,
           timer: 2000,
@@ -159,20 +158,12 @@ export class AllService {
           text: "Product Name:" + product.productName,
           icon: 'success'
         })
-        console.log("setItem")
         localStorage.setItem('cartProducts', JSON.stringify(this.cartProductList))
         this._cartListModified.next();
-        console.log("cartList Modifies")
-
   }
-
-
-  
 
   setCartIcon(productId) {
     return ! JSON.parse(localStorage.getItem('cartProducts')).includes(productId);
     }
-
-    
 }
 

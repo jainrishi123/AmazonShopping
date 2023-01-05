@@ -5,5 +5,5 @@ export class Product {
     unit: number
     price: number
     supplierId: number
-
+    productImage:string
 }

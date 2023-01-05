@@ -3,6 +3,7 @@ import { Product } from 'src/app/models/Product';
 import { AllService } from 'src/app/service/all.service';
 import Swal from 'sweetalert2';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,9 @@ export class ProductsComponent implements OnInit {
   closeResult: string;
 
 
-  constructor(productService: AllService, private modalService: NgbModal) {
+  constructor(productService: AllService, private modalService: NgbModal,private router: Router) {
+    // console.log(this.router.url)
+  
     this.productService = productService;
     console.log("product Constructor")
 
@@ -43,14 +46,14 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  addCart(product: Product) {
-    this.productService.addcart(product);
-  }
+  // addCart(product: Product) {
+  //   this.productService.addcart(product);
+  // }
 
-  removeCart(product: Product) {
-    console.log("remove icon")
-    this.productService.removeCart(product);
-  }
+  // removeCart(product: Product) {
+  //   console.log("remove icon")
+  //   this.productService.removeCart(product);
+  // }
 
   addProducts() {
     this.productService.addProducts(this.product)
@@ -124,9 +127,9 @@ export class ProductsComponent implements OnInit {
     this.product = product
   }
 
-  productCartIcon(productId) {
-    return this.productService.setCartIcon(productId);
-  }
+  // productCartIcon(productId) {
+  //   return this.productService.setCartIcon(productId);
+  // }
 
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

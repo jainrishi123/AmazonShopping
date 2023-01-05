@@ -17,6 +17,8 @@ h1 {
     width: 800px;
     align-items: center;
     margin: auto;
+    background-color: #ddd;
+
 }
 
 .table {
@@ -67,3 +69,12 @@ table > tbody >tr >td{
     display:table-cell ;
     vertical-align: middle;
 }
+
+.shopping button {
+    width:300px;
+    margin-top: 10px;
+    background-color:rgb(162, 162, 218);
+    border: 0;
+    color: var(--color4);
+    border-radius: 10px;
+  }

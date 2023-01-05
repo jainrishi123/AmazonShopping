@@ -12,6 +12,9 @@ import { ShipperComponent } from './components/shipper/shipper.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { OrderComponent } from './components/order/order.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomerProductComponent } from './components/customer-product/customer-product.component';
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CartComponent,
     ShipperComponent,
     CustomerComponent,
-    OrderComponent
+    OrderComponent,
+    CustomerProductComponent,
+    UserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

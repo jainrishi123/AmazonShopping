@@ -21,42 +21,24 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.getCartProducts()
     this.totalAmount();
+    console.log("cart oninit")
 
   }
 
   totalAmount() {
     this.amount = 0
-    // console.log(typeof this.cartProducts)
-    // console.log(typeof this.cartService.cartProductList)
-
     this.cartService.cartProductList.forEach(id => {
       this.cartService.findProductById(id).subscribe(product1 => {
         this.amount = this.amount + product1.price * 1
       })
     })
-    // this.getCartProducts()
-    // console.log(this.cartProducts)
-    // let p=this.cartProducts;
-    // console.log("above")
-    // console.log(this.cartProducts.at(0))
-    // console.log("cart products")
-    // console.log(this.cartProducts)
-
-    // console.log(p.at(0));
-    // for(let i=0;i<this.cartProducts.length;i++){
-    //   console.log(this.cartProducts[i]);
-    // }
-    // this.cartProducts.forEach(e =>{
-    //   this.amount=this.amount+e.price*1;
-    //   console.log(e);
-    // })
-
+    
   }
 
 
   getCartProducts() {
     if (this.cartService.cartProductList != undefined) {
-
+      this.cartProducts=[]
       this.cartService.cartProductList.forEach(id => {
         this.cartService.findProductById(id).subscribe(product1 => {
           this.cartProducts.push(product1)
@@ -66,16 +48,14 @@ export class CartComponent implements OnInit {
   }
 
   constructor(cartService: AllService) {
+    console.log("cart constructor")
     this.cartService = cartService
     const now = new Date();
     this.order.date = now.toISOString().slice(0, 10);
     this.order.shipperID = 101;
     this.order.customerID = 2
     this.cartService._cartListModified.subscribe(res => {
-
-
       this.getCartProducts()
-
     })
 
   }
@@ -83,7 +63,8 @@ export class CartComponent implements OnInit {
 
   removeCart(product: Product) {
     this.cartService.removeCart(product)
-    this.totalAmount();
+    // this.totalAmount();
+
   }
 
   BuyProducts() {
