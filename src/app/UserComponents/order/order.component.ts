@@ -11,26 +11,26 @@ import { OrderDetails } from 'src/app/models/OrderDetails';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  orders: Order[] = [ ]
+  orders: Order[] = []
   private orderService: AllService;
 
   ngOnInit(): void {
     // this.orderService.getProducts().subscribe(res =>{
     //   this.orderService.productList=res
     this.findOrderByCustomerId();
-   
+
   }
 
-  findOrderByCustomerId(){
-   this.orderService.findOrderByCustomerId().subscribe(res =>{
-    this.orders=res;
-   });
+  findOrderByCustomerId() {
+    this.orderService.findOrderByCustomerId().subscribe(res => {
+      this.orders = res;
+    });
   }
 
   constructor(orderService: AllService) {
     this.orderService = orderService;
-    
-   
+
+
   }
 
   getOrders() {
@@ -40,9 +40,8 @@ export class OrderComponent implements OnInit {
       });
   }
 
-  price(orderDetails:OrderDetails[])
-  {
-    return orderDetails.map(ob => 
-      ob.product.price).reduce((prev,curr)=>prev+curr);
+  price(orderDetails: OrderDetails[]) {
+    return orderDetails.map(ob =>
+      ob.product.price).reduce((prev, curr) => prev + curr);
   }
 }

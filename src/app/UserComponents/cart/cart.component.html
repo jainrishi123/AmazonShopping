@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let product of cartProducts">
-          <td><img src="{{product.productImage}}" style=" height:80px; margin-left:5s0px;"/></td>
+          <td><img src="{{product.productImage}}" style=" height:80px; margin-left:5s0px;" /></td>
           <td>{{product.productName}}</td>
           <td>{{product.price | currency:'INR'}}</td>
           <td>1</td>
@@ -73,8 +73,7 @@
   </div>
 </div>
 
-<div *ngIf="cartProducts?.length == 0"
-  style="display: block;">
+<div *ngIf="cartProducts?.length == 0" style="display: block;">
   <div style=" margin-left: 350px;">
     <svg width="700px" height="450px" viewBox="0 0 512 512" id="Layer_1" version="1.1" xml:space="preserve"
       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -11,12 +11,12 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AllService {
-  private base_product:string = 'http://localhost:9086/v1/products'
+  private base_product: string = 'http://localhost:9086/v1/products'
   private base_shipper = 'http://localhost:9086/v1/shipper'
   private base_customer = 'http://localhost:9086/v1/customer'
   private base_order = 'http://localhost:9086/v1/order'
 
-  cartProductList: any; 
+  cartProductList: any;
 
 
   private _productListModified = new Subject<void>();
@@ -28,11 +28,11 @@ export class AllService {
 
   constructor(private httpClient: HttpClient) {
     this.getProducts().subscribe();
-    
-    if(localStorage.getItem("cartProducts")!=undefined){
-    this.cartProductList = JSON.parse(localStorage.getItem('cartProducts'))
+
+    if (localStorage.getItem("cartProducts") != undefined) {
+      this.cartProductList = JSON.parse(localStorage.getItem('cartProducts'))
     }
-    
+
   }
 
   get productListModified() {
@@ -59,7 +59,7 @@ export class AllService {
     return this.httpClient.get<[Shipper]>(this.base_shipper)
   }
 
- public getProducts(): Observable<Product[]> {
+  public getProducts(): Observable<Product[]> {
     console.log("on getProducts")
     return this.httpClient.get<[Product]>(this.base_product)
   }
@@ -72,7 +72,7 @@ export class AllService {
   getOrders(): Observable<Order[]> {
     console.log("on order");
     return this.httpClient.get<[Order]>(this.base_order)
-    
+
   }
 
   addProducts(product: Product): any {
@@ -91,8 +91,8 @@ export class AllService {
     );
   }
 
-  addCustomer(customer:Customer){
-    return this.httpClient.post(this.base_customer,customer,{ responseType: 'text' }).pipe(
+  addCustomer(customer: Customer) {
+    return this.httpClient.post(this.base_customer, customer, { responseType: 'text' }).pipe(
       tap(() => {
         this._customerListModified.next();
       })
@@ -103,18 +103,18 @@ export class AllService {
     return this.httpClient.get<Product>(this.base_product + '/' + id)
   }
 
-  findOrderByCustomerId():Observable<Order[]>{
-    localStorage.setItem('customerId','')
-    console.log(localStorage.getItem('customerId')+"customerId")
-    localStorage.setItem('customerId',JSON.stringify(2));
-    return this.httpClient.get<[Order]>(this.base_order+"/"+parseInt(localStorage.getItem("customerId")));
+  findOrderByCustomerId(): Observable<Order[]> {
+    localStorage.setItem('customerId', '')
+    console.log(localStorage.getItem('customerId') + "customerId")
+    localStorage.setItem('customerId', JSON.stringify(2));
+    return this.httpClient.get<[Order]>(this.base_order + "/" + parseInt(localStorage.getItem("customerId")));
   }
 
-  findCustomerById():Observable<Customer>{
-    localStorage.setItem('customerId','')
-    console.log(localStorage.getItem('customerId')+"customerId")
-    localStorage.setItem('customerId',JSON.stringify(2));
-    return this.httpClient.get<Customer>(this.base_customer+"/"+parseInt(localStorage.getItem("customerId")));
+  findCustomerById(): Observable<Customer> {
+    localStorage.setItem('customerId', '')
+    console.log(localStorage.getItem('customerId') + "customerId11[")
+    localStorage.setItem('customerId', JSON.stringify(2));
+    return this.httpClient.get<Customer>(this.base_customer + "/" + parseInt(localStorage.getItem("customerId")));
   }
 
   deleteProduct(id) {
@@ -125,9 +125,9 @@ export class AllService {
     );
   }
 
-  deleteCustomer(id){
-    return this.httpClient.delete(this.base_customer + '/' + id, { responseType: 'text'}).pipe(
-      tap(() =>{
+  deleteCustomer(id) {
+    return this.httpClient.delete(this.base_customer + '/' + id, { responseType: 'text' }).pipe(
+      tap(() => {
         this._customerListModified.next();
       })
     )
@@ -149,36 +149,36 @@ export class AllService {
     );
   }
 
-  addcart(product:Product){
+  addcart(product: Product) {
     this.cartProductList.push(product.productID);
-        Swal.fire({
-          showConfirmButton: false,
-          timer: 2000,
-          title: 'Product Added To Cart',
-          text: "Product Name:" + product.productName,
-          icon: 'success'
-        })
-      
-      localStorage.setItem('cartProducts', JSON.stringify(this.cartProductList))
-      this._cartListModified.next();
+    Swal.fire({
+      showConfirmButton: false,
+      timer: 2000,
+      title: 'Product Added To Cart',
+      text: "Product Name:" + product.productName,
+      icon: 'success'
+    })
+
+    localStorage.setItem('cartProducts', JSON.stringify(this.cartProductList))
+    this._cartListModified.next();
   }
 
-  removeCart(product:Product){
+  removeCart(product: Product) {
     this.cartProductList = this.cartProductList.filter(product1 => product1 !== product.productID)
-        Swal.fire({
-          showConfirmButton: false,
-          timer: 2000,
-          title: 'Product Removed from cart',
-          text: "Product Name:" + product.productName,
-          icon: 'success'
-        })
-        localStorage.setItem('cartProducts', JSON.stringify(this.cartProductList))
-        this._cartListModified.next();
+    Swal.fire({
+      showConfirmButton: false,
+      timer: 2000,
+      title: 'Product Removed from cart',
+      text: "Product Name:" + product.productName,
+      icon: 'success'
+    })
+    localStorage.setItem('cartProducts', JSON.stringify(this.cartProductList))
+    this._cartListModified.next();
   }
 
   setCartIcon(productId) {
-    return ! JSON.parse(localStorage.getItem('cartProducts')).includes(productId);
-    }
+    return !JSON.parse(localStorage.getItem('cartProducts')).includes(productId);
+  }
 
 }
 

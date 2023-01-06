@@ -1,13 +1,13 @@
 .product__body {
-     margin: 30px;  
-    padding: 10px; 
+    margin: 30px;
+    padding: 10px;
     text-align: center;
 }
 
 h1 {
     text-decoration-color: #04AA6D;
     text-align: center;
-    margin: 0  0 0 auto;
+    margin: 0 0 0 auto;
     padding-bottom: 10px;
 }
 
@@ -21,11 +21,11 @@ h1 {
     margin: auto;
     background-color: #ddd;
 
-    
+
     /* background-color: rgb(32, 86, 117); */
 }
 
- .table{
+.table {
     margin: 0 auto;
 }
 
@@ -72,11 +72,12 @@ h1 {
 
 .btn_add__products {
     transition-duration: 0.4s;
-  }
+}
 
-.btn_add__products:hover{
-    background-color: #5a4f42; /* Green */
-  color: white;
+.btn_add__products:hover {
+    background-color: #5a4f42;
+    /* Green */
+    color: white;
 }
 
 .product__form_Add button {
@@ -118,37 +119,43 @@ h1 {
     background-color: var(--color1);
     border: 0;
     color: var(--color4);
-} 
+}
 
 #products {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     border-radius: 5px !important;
-    
-  }
-  #products th {
-    background-color: #04AA6D;
-  color: white;
-  }
 
-  #products td, #products th {
+}
+
+#products th {
+    background-color: #04AA6D;
+    color: white;
+}
+
+#products td,
+#products th {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  #products tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #products tr:hover {background-color: rgb(241, 193, 193);}
-  
-  #products th {
+}
+
+#products tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#products tr:hover {
+    background-color: rgb(241, 193, 193);
+}
+
+#products th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #04AA6D;
     color: white;
-  }
+}
 
-  .header{
+.header {
     background-color: rgb(241, 193, 193) !important;
-  } 
+}

@@ -1,64 +1,64 @@
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    /* background-color: #333; */
-  }
-  
-  li {
-    float: left;
-    /* background-color: #333; */
-  }
-  
-  p {
-    display: block;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    /* background-color: #333; */
-  }
-  
-  li p {
-    display: block;
-    color: brown;
-    font-weight: bold;
-    text-align: center;
-    font-size: 25px;
-    padding-top: 10px;
-    padding-left: 10px;
-    text-decoration: none;
-    background-color:  #ff99cc;
-    text-decoration: inherit;
-    text-rendering: geometricPrecision;
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  li img {
-    margin-top: 6px;
-    margin-left: 6px;
-    background-color:  #ff99cc;
-    height: 35px;
-    width: 35px;
-  }
-  
-  li a:hover {
-    background-color:  #ff99cc;
-  }
-  
-  li .signOut {
-    background-color: bisque;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background-color: #333; */
+}
+
+li {
+  float: left;
+  /* background-color: #333; */
+}
+
+p {
+  display: block;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  /* background-color: #333; */
+}
+
+li p {
+  display: block;
+  color: brown;
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-left: 10px;
+  text-decoration: none;
+  background-color: #ff99cc;
+  text-decoration: inherit;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+li img {
+  margin-top: 6px;
+  margin-left: 6px;
+  background-color: #ff99cc;
+  height: 35px;
+  width: 35px;
+}
+
+li a:hover {
+  background-color: #ff99cc;
+}
+
+li .signOut {
+  background-color: bisque;
+}
 
 
 
-  /* Admin DropDown */
- 
+/* Admin DropDown */
+
 /*   
 .dropdown {
   float: left;
@@ -113,12 +113,13 @@ ul {
   display: contents;
 } */
 
-.body{
+.body {
   background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
-width: 100%;
-height: 170%;
+  width: 100%;
+  height: 170%;
 
 }
+
 .customer__form_Add {
   margin: auto;
   width: 400px;
@@ -148,7 +149,7 @@ height: 170%;
   transition-duration: 0.4s;
 }
 
-.btn_add__customers:hover{
-  background-color: #945858; 
-color: white;
+.btn_add__customers:hover {
+  background-color: #945858;
+  color: white;
 }

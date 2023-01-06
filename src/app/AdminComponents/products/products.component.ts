@@ -20,9 +20,9 @@ export class ProductsComponent implements OnInit {
   closeResult: string;
 
 
-  constructor(productService: AllService, private modalService: NgbModal,private router: Router) {
+  constructor(productService: AllService, private modalService: NgbModal, private router: Router) {
     // console.log(this.router.url)
-  
+
     this.productService = productService;
     console.log("product Constructor")
 
@@ -34,8 +34,6 @@ export class ProductsComponent implements OnInit {
       this.getProducts(),
         console.log("Product Onint")
     })
-
-
   }
 
 
@@ -110,7 +108,7 @@ export class ProductsComponent implements OnInit {
           title: res,
           icon: 'success'
         })
-        this.product=new Product();
+        this.product = new Product();
       }, (error) => {
         Swal.fire({
           showConfirmButton: false,

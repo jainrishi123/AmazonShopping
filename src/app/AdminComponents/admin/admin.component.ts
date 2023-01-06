@@ -9,16 +9,16 @@ import { ProductsComponent } from '../products/products.component';
 })
 export class AdminComponent {
 
-  activeTab:any=ProductsComponent;
+  activeTab: any = ProductsComponent;
 
-  constructor(private route:ActivatedRoute){
+  constructor(private route: ActivatedRoute) {
 
   }
 
-  ngOnInit(){
-    this.route.data.subscribe(ele =>{
-      if(ele && ele['component']){
-        this.activeTab=ele['component']
+  ngOnInit() {
+    this.route.data.subscribe(ele => {
+      if (ele && ele['component']) {
+        this.activeTab = ele['component']
       }
     });
   }

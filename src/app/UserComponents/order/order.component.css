@@ -64,17 +64,17 @@ h1 {
     background-color: rgb(241, 193, 193) !important;
 }
 
-table > tbody >tr >td{
-   
-    display:table-cell ;
+table>tbody>tr>td {
+
+    display: table-cell;
     vertical-align: middle;
 }
 
 .shopping button {
-    width:300px;
+    width: 300px;
     margin-top: 10px;
-    background-color:rgb(162, 162, 218);
+    background-color: rgb(162, 162, 218);
     border: 0;
     color: var(--color4);
     border-radius: 10px;
-  }
+}

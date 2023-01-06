@@ -32,13 +32,13 @@ export class CartComponent implements OnInit {
         this.amount = this.amount + product1.price * 1
       })
     })
-    
+
   }
 
 
   getCartProducts() {
     if (this.cartService.cartProductList != undefined) {
-      this.cartProducts=[]
+      this.cartProducts = []
       this.cartService.cartProductList.forEach(id => {
         this.cartService.findProductById(id).subscribe(product1 => {
           this.cartProducts.push(product1)

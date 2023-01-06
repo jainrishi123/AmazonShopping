@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/Customer';
 import { AllService } from 'src/app/service/all.service';
 import Swal from 'sweetalert2';
-import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -13,8 +13,8 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class CustomerComponent implements OnInit {
   customerService: AllService
   customers: Customer[]
-  customer:Customer=new Customer();
-  closeResult:string;
+  customer: Customer = new Customer();
+  closeResult: string;
 
   constructor(customerService: AllService, private modalService: NgbModal) {
     this.customerService = customerService
@@ -34,8 +34,8 @@ export class CustomerComponent implements OnInit {
       });
   }
 
-  deleteCustomer(id){
-    this.customerService.deleteCustomer(id).subscribe(res=>{
+  deleteCustomer(id) {
+    this.customerService.deleteCustomer(id).subscribe(res => {
       Swal.fire({
         showConfirmButton: false,
         timer: 3000,
@@ -43,19 +43,19 @@ export class CustomerComponent implements OnInit {
         icon: 'success'
       })
     },
-    (error)=>{
-      Swal.fire({
-        showConfirmButton: false,
-        timer: 3000,
-        text:"Customer Order is Present",
-        title: "Customer Cannot be Deleted",
-        icon: 'error'
+      (error) => {
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          text: "Customer Order is Present",
+          title: "Customer Cannot be Deleted",
+          icon: 'error'
+        })
       })
-    })
   }
 
-  addCustomer(){
-    this.customerService.addCustomer(this.customer).subscribe(res=>{
+  addCustomer() {
+    this.customerService.addCustomer(this.customer).subscribe(res => {
       Swal.fire({
         showConfirmButton: false,
         timer: 3000,
@@ -63,14 +63,14 @@ export class CustomerComponent implements OnInit {
         icon: 'success'
       })
     },
-    (error)=>{
-      Swal.fire({
-        showConfirmButton: false,
-        timer: 3000,
-        title:error.error,
-        icon: 'error'
+      (error) => {
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: error.error,
+          icon: 'error'
+        })
       })
-    })
     this.modalService.dismissAll();
 
   }
@@ -92,16 +92,16 @@ export class CustomerComponent implements OnInit {
           icon: 'error'
         })
       })
-      this.customer=new Customer();
-      this.modalService.dismissAll();
+    this.customer = new Customer();
+    this.modalService.dismissAll();
   }
 
   setEditCustomerId(customer: Customer) {
-     this.customer = customer
+    this.customer = customer
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

@@ -14,29 +14,30 @@ import { CustomerProductComponent } from '../product/customer-product.component'
 export class UserComponent {
   closeResult: string;
   userService: AllService
-  customer:Customer=new Customer();
-  customerName:Customer=new Customer();
+  customer: Customer = new Customer();
+  customerName: string = ""
 
-  activeTab:any=CustomerProductComponent;
-  constructor(private route:ActivatedRoute,private modalService: NgbModal,userService:AllService){
-    this.userService=userService
+  activeTab: any = CustomerProductComponent;
+  constructor(private route: ActivatedRoute, private modalService: NgbModal, userService: AllService) {
+    this.userService = userService
   }
-  ngOnInit(){
-    this.route.data.subscribe(ele =>{
-      if(ele && ele['component']){
-        this.activeTab=ele['component']
+  ngOnInit() {
+    this.route.data.subscribe(ele => {
+      if (ele && ele['component']) {
+        this.activeTab = ele['component']
       }
     });
+    this.getCustomerName()
   }
 
-  getCustomerName(){
-    this.userService.findCustomerById().subscribe(res=>{
-     this.customerName= res
-  })
-  return this.customerName.customerName;
+  getCustomerName() {
+    this.userService.findCustomerById().subscribe(res => {
+      this.customerName = res.customerName
+    })
   }
-  addCustomer(){
-    this.userService.addCustomer(this.customer).subscribe(res=>{
+
+  addCustomer() {
+    this.userService.addCustomer(this.customer).subscribe(res => {
       Swal.fire({
         showConfirmButton: false,
         timer: 3000,
@@ -44,26 +45,26 @@ export class UserComponent {
         icon: 'success'
       })
     },
-    (error)=>{
-      Swal.fire({
-        showConfirmButton: false,
-        timer: 3000,
-        title:error.error,
-        icon: 'error'
+      (error) => {
+        Swal.fire({
+          showConfirmButton: false,
+          timer: 3000,
+          title: error.error,
+          icon: 'error'
+        })
       })
-    })
     this.modalService.dismissAll();
 
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

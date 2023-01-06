@@ -25,37 +25,43 @@ tbody {
 } */
 
 #shippers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    border-radius: 5px !important;
-    background-color: #ddd;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 5px !important;
+  background-color: #ddd;
 
-  }
-  #shippers th {
-    background-color: #04AA6D;
+}
+
+#shippers th {
+  background-color: #04AA6D;
   color: white;
-  }
+}
 
-  #shippers td, #shippers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
+#shippers td,
+#shippers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
-  #shippers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #shippers tr:hover {background-color: rgb(241, 193, 193);}
-  
 
-  #shippers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #04AA6D;
-    color: white;
-  }
+#shippers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-  .header{
-    background-color: rgb(241, 193, 193) !important;
-  } 
+#shippers tr:hover {
+  background-color: rgb(241, 193, 193);
+}
+
+
+#shippers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.header {
+  background-color: rgb(241, 193, 193) !important;
+}
