@@ -6,15 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProductsComponent } from './components/products/products.component';
-import { CartComponent } from './components/cart/cart.component';
-import { ShipperComponent } from './components/shipper/shipper.component';
-import { CustomerComponent } from './components/customer/customer.component';
-import { OrderComponent } from './components/order/order.component';
+import { ProductsComponent } from './AdminComponents/products/products.component';
+import { CartComponent } from './UserComponents/cart/cart.component';
+import { ShipperComponent } from './AdminComponents/shipper/shipper.component';
+import { CustomerComponent } from './AdminComponents/customer/customer.component';
+import { OrderComponent } from './UserComponents/order/order.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CustomerProductComponent } from './components/customer-product/customer-product.component';
-import { UserComponent } from './user/user.component';
-import { AdminComponent } from './admin/admin.component';
+import { CustomerProductComponent } from './UserComponents/product/customer-product.component';
+import { AdminComponent } from './AdminComponents/admin/admin.component';
+import { UserComponent } from './UserComponents/user/user.component';
+import { AllOrdersComponent } from './AdminComponents/all-orders/all-orders.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import { AdminComponent } from './admin/admin.component';
     CustomerComponent,
     OrderComponent,
     CustomerProductComponent,
+    AdminComponent,
     UserComponent,
-    AdminComponent
+    AllOrdersComponent,    
   ],
   imports: [
     BrowserModule,

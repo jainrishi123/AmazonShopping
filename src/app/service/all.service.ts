@@ -103,6 +103,20 @@ export class AllService {
     return this.httpClient.get<Product>(this.base_product + '/' + id)
   }
 
+  findOrderByCustomerId():Observable<Order[]>{
+    localStorage.setItem('customerId','')
+    console.log(localStorage.getItem('customerId')+"customerId")
+    localStorage.setItem('customerId',JSON.stringify(2));
+    return this.httpClient.get<[Order]>(this.base_order+"/"+parseInt(localStorage.getItem("customerId")));
+  }
+
+  findCustomerById():Observable<Customer>{
+    localStorage.setItem('customerId','')
+    console.log(localStorage.getItem('customerId')+"customerId")
+    localStorage.setItem('customerId',JSON.stringify(2));
+    return this.httpClient.get<Customer>(this.base_customer+"/"+parseInt(localStorage.getItem("customerId")));
+  }
+
   deleteProduct(id) {
     return this.httpClient.delete(this.base_product + '/' + id, { responseType: 'text' }).pipe(
       tap(() => {
@@ -165,5 +179,6 @@ export class AllService {
   setCartIcon(productId) {
     return ! JSON.parse(localStorage.getItem('cartProducts')).includes(productId);
     }
+
 }
 

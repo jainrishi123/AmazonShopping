@@ -53,17 +53,16 @@ export class CartComponent implements OnInit {
     const now = new Date();
     this.order.date = now.toISOString().slice(0, 10);
     this.order.shipperID = 101;
-    this.order.customerID = 2
+    this.order.customerID = parseInt(localStorage.getItem("customerId"));
     this.cartService._cartListModified.subscribe(res => {
       this.getCartProducts()
     })
-
   }
 
 
   removeCart(product: Product) {
     this.cartService.removeCart(product)
-    // this.totalAmount();
+    this.totalAmount();
 
   }
 

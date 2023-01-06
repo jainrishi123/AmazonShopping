@@ -1,0 +1,112 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #333; */
+  }
+  
+  li {
+    float: left;
+    /* background-color: #333; */
+  }
+  
+  p {
+    display: block;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    /* background-color: #333; */
+  }
+  
+  li p {
+    display: block;
+    color: brown;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+    background-color:  #ff99cc;
+    text-decoration: inherit;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  li img {
+    margin-top: 6px;
+    margin-left: 6px;
+    background-color:  #ff99cc;
+    height: 35px;
+    width: 35px;
+  }
+  
+  li a:hover {
+    background-color:  #ff99cc;
+  }
+  
+  li .signOut {
+    background-color: bisque;
+  }
+
+
+
+  /* Admin DropDown */
+ 
+  
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  /* padding: 14px 16px; */
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:  #ff99cc;
+  
+  display: block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:  #ff99cc;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  background-color:  #ff99cc;
+  /* padding: 12px 16px; */
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  padding-right: 6px;
+}
+
+.dropdown-content a:hover {
+  background-color:  #ff99cc;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: contents;
+}

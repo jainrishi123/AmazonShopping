@@ -11,17 +11,20 @@ import { OrderDetails } from 'src/app/models/OrderDetails';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  orders: Order[] = []
+  orders: Order[] = [ ]
   private orderService: AllService;
 
   ngOnInit(): void {
-
-    this.getOrders()
     // this.orderService.getProducts().subscribe(res =>{
     //   this.orderService.productList=res
-    // })
-    
+    this.findOrderByCustomerId();
+   
+  }
 
+  findOrderByCustomerId(){
+   this.orderService.findOrderByCustomerId().subscribe(res =>{
+    this.orders=res;
+   });
   }
 
   constructor(orderService: AllService) {

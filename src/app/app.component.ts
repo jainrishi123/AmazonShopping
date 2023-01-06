@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   closeResult: string;
   appService: AllService
   customer:Customer=new Customer();
+  customerId:number=1
 
   constructor( router: Router,private modalService: NgbModal,appService:AllService) {
     this.router=router
@@ -41,42 +42,47 @@ export class AppComponent implements OnInit {
     this.displayStyle = "none";
   }
 
-  addCustomer(){
-    this.appService.addCustomer(this.customer).subscribe(res=>{
-      Swal.fire({
-        showConfirmButton: false,
-        timer: 3000,
-        title: res,
-        icon: 'success'
-      })
-    },
-    (error)=>{
-      Swal.fire({
-        showConfirmButton: false,
-        timer: 3000,
-        title:error.error,
-        icon: 'error'
-      })
-    })
-    this.modalService.dismissAll();
+  // addCustomer(){
+  //   this.appService.addCustomer(this.customer).subscribe(res=>{
+  //     Swal.fire({
+  //       showConfirmButton: false,
+  //       timer: 3000,
+  //       title: res,
+  //       icon: 'success'
+  //     })
+  //   },
+  //   (error)=>{
+  //     Swal.fire({
+  //       showConfirmButton: false,
+  //       timer: 3000,
+  //       title:error.error,
+  //       icon: 'error'
+  //     })
+  //   })
+  //   this.modalService.dismissAll();
 
-  }
+  // }
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
+  // open(content) {
+  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  //     this.closeResult = `Closed with: ${result}`;
+  //   }, (reason) => {
+  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //   });
+  // }
   
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  // private getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return 'by pressing ESC';
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return 'by clicking on a backdrop';
+  //   } else {
+  //     return `with: ${reason}`;
+  //   }
+  // }
+
+  setCustomerId(){
+    localStorage.setItem('customerId',"");
+    localStorage.setItem('customerId',JSON.stringify(this.customerId));
   }
 }
