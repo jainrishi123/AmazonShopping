@@ -11,6 +11,7 @@ import { CustomerProductComponent } from '../product/customer-product.component'
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
 export class UserComponent {
   closeResult: string;
   userService: AllService

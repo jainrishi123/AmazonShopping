@@ -1,84 +1,40 @@
 <div class="product__body">
   <h1>Products</h1>
+
   <div class="products">
+    <div class="container">
+      <div class="row align-items-start">
+        <ng-container *ngFor="let productVo of products">
+          <div class="card col-md-3 "
+            style=" height:370px;margin-right:auto ; background: linear-gradient(to top, #33ccff 0%, #ff99cc 100%); ">
+            <img src="{{productVo.productImage}}" alt="{{productVo.productName}}" style="margin-left: 35px;" />
+            <h4>{{productVo.productName}}
+            </h4>
+            <h5>Price: {{productVo.price | currency:'INR'}}
+            </h5>
+            <button class="product__btn">
+              <div *ngIf="productCartIcon(productVo.productID); else cartRemoveIcon" (click)="addCart(productVo)">
+                <svg width="30px" height="30px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M44.3,10A3.3,3.3,0,0,0,42,9H35a2,2,0,0,0-2,2h0a2,2,0,0,0,2,2h5.8L38.5,27H13.6L12,13h7a2,2,0,0,0,2-2h0a2,2,0,0,0-2-2H11.5l-.4-3.4A3,3,0,0,0,8.1,3h-3A2.1,2.1,0,0,0,3,4.7,2,2,0,0,0,5,7H7.2l3.2,26.9a5.9,5.9,0,0,0-2.8,6.3,6.1,6.1,0,0,0,4.6,4.7,6.2,6.2,0,0,0,7-3.9H29.8a6,6,0,1,0,5.7-8,6.2,6.2,0,0,0-5.7,4H19.2a6,6,0,0,0-4.9-3.9L14.1,31H39.4a3,3,0,0,0,2.9-2.6L45,12.6A3.6,3.6,0,0,0,44.3,10ZM35.5,37a2,2,0,1,1-2,2A2,2,0,0,1,35.5,37Zm-20,2a2,2,0,1,1-2-2A2,2,0,0,1,15.5,39Z" />
+                  <path
+                    d="M20.4,16.8a2.1,2.1,0,0,0,.2,2.7l5,4.9a1.9,1.9,0,0,0,2.8,0l5-4.9a2.1,2.1,0,0,0,.2-2.7,1.9,1.9,0,0,0-3-.2L29,18.2V9a2,2,0,0,0-4,0v9.2l-1.6-1.6A1.9,1.9,0,0,0,20.4,16.8Z" />
+                </svg>
+              </div>
 
-
-    <!-- <table class="table " id="products">
-        <thead class="header">
-          <tr>
-            <td scope="col">Product Id</td>
-            <td scope="col">Product Name</td>
-            <td scope="col">Price</td>
-            <td scope="col">Unit</td>
-            <td scope="col">Cart</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let productVo of products">
-            <td>{{productVo.productID}}</td>
-            <td>{{productVo.productName}}</td>
-            <td>{{productVo.price}}</td>
-            <td>{{productVo.unit}}</td>
-  
-           
-  
-            <td><button class="product__btn">
-                <div *ngIf="productCartIcon(productVo.productID); else cartRemoveIcon" (click)="addCart(productVo)">
-                  <svg width="30px" height="30px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <ng-template #cartRemoveIcon><button (click)="removeCart(productVo)">
+                  <svg width="22px" height="22px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path
-                      d="M44.3,10A3.3,3.3,0,0,0,42,9H35a2,2,0,0,0-2,2h0a2,2,0,0,0,2,2h5.8L38.5,27H13.6L12,13h7a2,2,0,0,0,2-2h0a2,2,0,0,0-2-2H11.5l-.4-3.4A3,3,0,0,0,8.1,3h-3A2.1,2.1,0,0,0,3,4.7,2,2,0,0,0,5,7H7.2l3.2,26.9a5.9,5.9,0,0,0-2.8,6.3,6.1,6.1,0,0,0,4.6,4.7,6.2,6.2,0,0,0,7-3.9H29.8a6,6,0,1,0,5.7-8,6.2,6.2,0,0,0-5.7,4H19.2a6,6,0,0,0-4.9-3.9L14.1,31H39.4a3,3,0,0,0,2.9-2.6L45,12.6A3.6,3.6,0,0,0,44.3,10ZM35.5,37a2,2,0,1,1-2,2A2,2,0,0,1,35.5,37Zm-20,2a2,2,0,1,1-2-2A2,2,0,0,1,15.5,39Z" />
+                      d="M44.3,10A3.3,3.3,0,0,0,42,9H37a2,2,0,0,0-2,2h0a2,2,0,0,0,2,2h3.8L38.5,27H13.6L12,13h5a2,2,0,0,0,2-2h0a2,2,0,0,0-2-2H11.5l-.4-3.4A3,3,0,0,0,8.1,3h-3A2.1,2.1,0,0,0,3,4.7,2,2,0,0,0,5,7H7.2l3.2,26.9a5.9,5.9,0,0,0-2.8,6.3,6.1,6.1,0,0,0,4.6,4.7,6.2,6.2,0,0,0,7-3.9H29.8a6,6,0,1,0,5.7-8,6.2,6.2,0,0,0-5.7,4H19.2a6,6,0,0,0-4.9-3.9L14.1,31H39.4a3,3,0,0,0,2.9-2.6L45,12.6A3.6,3.6,0,0,0,44.3,10ZM35.5,37a2,2,0,1,1-2,2A2,2,0,0,1,35.5,37Zm-20,2a2,2,0,1,1-2-2A2,2,0,0,1,15.5,39Z" />
                     <path
-                      d="M20.4,16.8a2.1,2.1,0,0,0,.2,2.7l5,4.9a1.9,1.9,0,0,0,2.8,0l5-4.9a2.1,2.1,0,0,0,.2-2.7,1.9,1.9,0,0,0-3-.2L29,18.2V9a2,2,0,0,0-4,0v9.2l-1.6-1.6A1.9,1.9,0,0,0,20.4,16.8Z" />
-  
+                      d="M33.6,15.2a2.1,2.1,0,0,0-.2-2.7l-5-4.9a1.9,1.9,0,0,0-2.8,0l-5,4.9a2.1,2.1,0,0,0-.2,2.7,1.9,1.9,0,0,0,3,.2L25,13.8V23a2,2,0,0,0,4,0V13.8l1.6,1.6A1.9,1.9,0,0,0,33.6,15.2Z" />
                   </svg>
-                </div>
-                <ng-template #cartRemoveIcon><button (click)="removeCart(productVo)">
-                    <svg width="22px" height="22px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M44.3,10A3.3,3.3,0,0,0,42,9H37a2,2,0,0,0-2,2h0a2,2,0,0,0,2,2h3.8L38.5,27H13.6L12,13h5a2,2,0,0,0,2-2h0a2,2,0,0,0-2-2H11.5l-.4-3.4A3,3,0,0,0,8.1,3h-3A2.1,2.1,0,0,0,3,4.7,2,2,0,0,0,5,7H7.2l3.2,26.9a5.9,5.9,0,0,0-2.8,6.3,6.1,6.1,0,0,0,4.6,4.7,6.2,6.2,0,0,0,7-3.9H29.8a6,6,0,1,0,5.7-8,6.2,6.2,0,0,0-5.7,4H19.2a6,6,0,0,0-4.9-3.9L14.1,31H39.4a3,3,0,0,0,2.9-2.6L45,12.6A3.6,3.6,0,0,0,44.3,10ZM35.5,37a2,2,0,1,1-2,2A2,2,0,0,1,35.5,37Zm-20,2a2,2,0,1,1-2-2A2,2,0,0,1,15.5,39Z" />
-                      <path
-                        d="M33.6,15.2a2.1,2.1,0,0,0-.2-2.7l-5-4.9a1.9,1.9,0,0,0-2.8,0l-5,4.9a2.1,2.1,0,0,0-.2,2.7,1.9,1.9,0,0,0,3,.2L25,13.8V23a2,2,0,0,0,4,0V13.8l1.6,1.6A1.9,1.9,0,0,0,33.6,15.2Z" />
-  
-                    </svg>
-                  </button>
-                </ng-template>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-
-      <div class="container">
-        <div class="row align-items-start" >
-          <ng-container *ngFor="let productVo of products">
-            <div class="card col-md-3 " style=" height:370px;margin-right:auto ; background: linear-gradient(to top, #33ccff 0%, #ff99cc 100%); ">
-              <img src="{{productVo.productImage}}" alt="{{productVo.productName}}" style="margin-left: 35px;" />
-              <h4>{{productVo.productName}}</h4>
-              <h5>Price: {{productVo.price | currency:'INR'}} </h5>
-
-    <button class="product__btn">
-      <div *ngIf="productCartIcon(productVo.productID); else cartRemoveIcon" (click)="addCart(productVo)">
-        <svg width="30px" height="30px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M44.3,10A3.3,3.3,0,0,0,42,9H35a2,2,0,0,0-2,2h0a2,2,0,0,0,2,2h5.8L38.5,27H13.6L12,13h7a2,2,0,0,0,2-2h0a2,2,0,0,0-2-2H11.5l-.4-3.4A3,3,0,0,0,8.1,3h-3A2.1,2.1,0,0,0,3,4.7,2,2,0,0,0,5,7H7.2l3.2,26.9a5.9,5.9,0,0,0-2.8,6.3,6.1,6.1,0,0,0,4.6,4.7,6.2,6.2,0,0,0,7-3.9H29.8a6,6,0,1,0,5.7-8,6.2,6.2,0,0,0-5.7,4H19.2a6,6,0,0,0-4.9-3.9L14.1,31H39.4a3,3,0,0,0,2.9-2.6L45,12.6A3.6,3.6,0,0,0,44.3,10ZM35.5,37a2,2,0,1,1-2,2A2,2,0,0,1,35.5,37Zm-20,2a2,2,0,1,1-2-2A2,2,0,0,1,15.5,39Z" />
-          <path
-            d="M20.4,16.8a2.1,2.1,0,0,0,.2,2.7l5,4.9a1.9,1.9,0,0,0,2.8,0l5-4.9a2.1,2.1,0,0,0,.2-2.7,1.9,1.9,0,0,0-3-.2L29,18.2V9a2,2,0,0,0-4,0v9.2l-1.6-1.6A1.9,1.9,0,0,0,20.4,16.8Z" />
-
-        </svg>
+                </button>
+              </ng-template>
+            </button>
+          </div>
+        </ng-container>
       </div>
-      <ng-template #cartRemoveIcon><button (click)="removeCart(productVo)">
-          <svg width="22px" height="22px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M44.3,10A3.3,3.3,0,0,0,42,9H37a2,2,0,0,0-2,2h0a2,2,0,0,0,2,2h3.8L38.5,27H13.6L12,13h5a2,2,0,0,0,2-2h0a2,2,0,0,0-2-2H11.5l-.4-3.4A3,3,0,0,0,8.1,3h-3A2.1,2.1,0,0,0,3,4.7,2,2,0,0,0,5,7H7.2l3.2,26.9a5.9,5.9,0,0,0-2.8,6.3,6.1,6.1,0,0,0,4.6,4.7,6.2,6.2,0,0,0,7-3.9H29.8a6,6,0,1,0,5.7-8,6.2,6.2,0,0,0-5.7,4H19.2a6,6,0,0,0-4.9-3.9L14.1,31H39.4a3,3,0,0,0,2.9-2.6L45,12.6A3.6,3.6,0,0,0,44.3,10ZM35.5,37a2,2,0,1,1-2,2A2,2,0,0,1,35.5,37Zm-20,2a2,2,0,1,1-2-2A2,2,0,0,1,15.5,39Z" />
-            <path
-              d="M33.6,15.2a2.1,2.1,0,0,0-.2-2.7l-5-4.9a1.9,1.9,0,0,0-2.8,0l-5,4.9a2.1,2.1,0,0,0-.2,2.7,1.9,1.9,0,0,0,3,.2L25,13.8V23a2,2,0,0,0,4,0V13.8l1.6,1.6A1.9,1.9,0,0,0,33.6,15.2Z" />
-          </svg>
-        </button>
-      </ng-template>
-    </button>
-  </div>
-  </ng-container>
-  </div>
-  </div>
+    </div>
   </div>
 </div>

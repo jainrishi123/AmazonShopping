@@ -34,7 +34,6 @@
     <div colspan="7"><button type="button" class="btn_add__products" style="border-radius: 8px ;"
         (click)="buyBtnStateChange()">
         Buy Now</button> </div>
-    <!-- (click)="openAddBtnState()"  -->
   </div>
 
   <div class="form" *ngIf="buyBtnState">
@@ -45,11 +44,6 @@
           <label for="Date">Order Date</label>
           <input type="text" id="date" placeholder="Today's Date" readonly [(ngModel)]="order.date"
             [ngModelOptions]="{standalone: true}">
-          <!-- <script> 
-                  var date = new Date(); 
-                  var p = document.getElementById("myId"); 
-                  p.innerHTML = date; 
-                  </script>  -->
         </div>
         <div>
           <label for="customer__id">Customer Id</label>
