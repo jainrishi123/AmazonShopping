@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AllService } from './service/all.service';
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   appService: AllService
   customer:Customer=new Customer();
   customerId:number=1
+  formOpen:boolean=false;
 
   constructor( router: Router,private modalService: NgbModal,appService:AllService) {
     this.router=router
@@ -80,6 +81,10 @@ export class AppComponent implements OnInit {
   //     return `with: ${reason}`;
   //   }
   // }
+
+  fun(){
+    this.formOpen=!this.formOpen;
+  }
 
   setCustomerId(){
     localStorage.setItem('customerId',"");

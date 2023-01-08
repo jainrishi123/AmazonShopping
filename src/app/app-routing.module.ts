@@ -10,6 +10,8 @@ import { AdminComponent } from './AdminComponents/admin/admin.component';
 import { UserComponent } from './UserComponents/user/user.component';
 import { AllService } from './service/all.service';
 import { AllOrdersComponent } from './AdminComponents/all-orders/all-orders.component';
+import { AppComponent } from './app.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
         {path:"admin/shipper",component:AdminComponent,data:{ component:ShipperComponent}},
@@ -17,10 +19,11 @@ const routes: Routes = [
         {path:"cart",component:UserComponent,data:{component:CartComponent}},
         {path:"admin/customer",component:AdminComponent,data:{component:CustomerComponent}},
         {path:"order",component:UserComponent,data:{component:OrderComponent}},
-        {path:"",component:UserComponent},
+        {path:"user",component:UserComponent},
         {path:"admin/products",component:AdminComponent,data:{CustomerProductComponent}},
         {path:"admin",component:AdminComponent},
-        {path:"admin/orders",component:AdminComponent,data:{component:AllOrdersComponent}}
+        {path:"admin/orders",component:AdminComponent,data:{component:AllOrdersComponent}},
+        {path:"",component:LandingPageComponent}
 
 
 ];

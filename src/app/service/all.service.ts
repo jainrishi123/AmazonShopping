@@ -104,17 +104,11 @@ export class AllService {
   }
 
   findOrderByCustomerId(): Observable<Order[]> {
-    localStorage.setItem('customerId', '')
-    console.log(localStorage.getItem('customerId') + "customerId")
-    localStorage.setItem('customerId', JSON.stringify(2));
     return this.httpClient.get<[Order]>(this.base_order + "/" + parseInt(localStorage.getItem("customerId")));
   }
 
-  findCustomerById(): Observable<Customer> {
-    localStorage.setItem('customerId', '')
-    console.log(localStorage.getItem('customerId') + "customerId11[")
-    localStorage.setItem('customerId', JSON.stringify(2));
-    return this.httpClient.get<Customer>(this.base_customer + "/" + parseInt(localStorage.getItem("customerId")));
+  findCustomerById(id): Observable<Customer> {
+    return this.httpClient.get<Customer>(this.base_customer + "/" + id);
   }
 
   deleteProduct(id) {

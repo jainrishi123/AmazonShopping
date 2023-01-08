@@ -31,7 +31,7 @@ export class UserComponent {
   }
 
   getCustomerName() {
-    this.userService.findCustomerById().subscribe(res => {
+    this.userService.findCustomerById(localStorage.getItem('customerId')).subscribe(res => {
       this.customerName = res.customerName
     })
   }
