@@ -15,10 +15,7 @@ export class OrderComponent implements OnInit {
   private orderService: AllService;
 
   ngOnInit(): void {
-    // this.orderService.getProducts().subscribe(res =>{
-    //   this.orderService.productList=res
     this.findOrderByCustomerId();
-
   }
 
   findOrderByCustomerId() {
